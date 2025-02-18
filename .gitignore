@@ -1,0 +1,5 @@
+# build/%.o: src/%.c
+# build/*.so
+# build/*.o
+
+build/

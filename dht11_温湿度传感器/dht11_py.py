@@ -8,7 +8,7 @@ class class_dht11:
     def __init__(self, pin):   
         self.__pin=pin 
         
-        self.__lib=cdll.LoadLibrary(os.path.dirname(os.path.realpath(__file__)) + '/dht11_dll.so')
+        self.__lib=cdll.LoadLibrary(os.path.dirname(os.path.realpath(__file__)) + '/lib/libdht11_weather.so')
         self.__data= (c_int*5)()#生成c的数组
         self.__ptr= pointer(self.__data)#指向数组的指针
 
@@ -70,7 +70,7 @@ class class_dht11:
         
         
 if __name__ == '__main__':
-    pin=24
+    pin=24 # 设置数据pin位置
     dht11=class_dht11(pin)
     #print(dht11.__lib)
     #f_read_data=dht11.dht11_read_data#把函数地址放入变量
@@ -86,7 +86,7 @@ if __name__ == '__main__':
             if res==1:
                 data = dht11.get_data()
                 print(f"Temperature is {data[2]}.{data[3]}°C, Humidity is {data[0]}.{data[1]}%")#输出温湿度
-                dht11.save_dht11_data(save_strategy='csv')
+                # dht11.save_dht11_data(save_strategy='csv')
                 
             if res==0:
                 print("校验失败")
@@ -96,7 +96,9 @@ if __name__ == '__main__':
                 print("响应超时")
             else:
                 pass
-            time.sleep(1)
+            time.sleep(5)
             #print("========================")
     except KeyboardInterrupt:
+        
         pass
+        

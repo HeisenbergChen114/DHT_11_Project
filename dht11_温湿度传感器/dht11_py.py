@@ -87,7 +87,7 @@ if __name__ == '__main__':
                 data = dht11.get_data()
                 print(f"Temperature is {data[2]}.{data[3]}°C, Humidity is {data[0]}.{data[1]}%")#输出温湿度
                 # dht11.save_dht11_data(save_strategy='csv')
-                
+                time.sleep(5)
             if res==0:
                 print("校验失败")
             if res==2:
@@ -96,7 +96,9 @@ if __name__ == '__main__':
                 print("响应超时")
             else:
                 pass
-            time.sleep(5)
+            
+            if(res != 1):
+                time.sleep(1)
             #print("========================")
     except KeyboardInterrupt:
         

@@ -34,3 +34,18 @@ install(TARGETS dht11_weather
         LIBRARY DESTINATION "lib"
         ARCHIVE DESTINATION "lib"
 )
+
+
+# 这份 CMakeLists.txt 的构建逻辑顺序如下：
+# 设置 CMake 的最低版本要求为 3.10。
+# 定义项目 dht11_weather，指定支持的语言、项目描述和版本。
+# 设置 C++ 的标准为 17。
+# 查找 wiringPi 库，如果未找到则报错终止。
+# 遍历指定目录下的 C 语言源文件。
+# 创建名为 dht11_weather 的动态库。
+# 设置动态库的头文件包含路径。
+# 将 wiringPi 库链接到动态库。
+# 设置动态库的输出路径。
+# 添加动态库的安装规则，指定安装到 lib 目录。
+
+# 出错在没有找动态库wiringPi同时链接wiringPi
